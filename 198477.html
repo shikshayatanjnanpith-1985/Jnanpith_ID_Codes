@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amritendu Mukherjee - ID Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            /* Padding to prevent top bar from covering content */
+            padding-top: 60px; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .school-font { font-family: 'Noto Serif', serif; }
+
+        /* ID Card Specific Dimensions */
+        .id-card {
+            width: 350px;
+            height: 545px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+            page-break-inside: avoid;
+            margin: 0 auto;
+        }
+
+        /* Branding Colors */
+        .bg-school-green { background-color: #1a4d2e; }
+        .bg-header-custom { background-color: #ffb93f; }
+        .bg-footer-custom { background-color: #7d0403; }
+        .text-school-green { color: #1a4d2e; }
+        .bg-school-gold { background-color: #eab308; }
+        .text-school-gold { color: #ca8a04; }
+
+        /* Animations */
+        @keyframes round-light {
+            0% { box-shadow: 6px 0 15px rgba(255, 255, 255, 1); }
+            25% { box-shadow: 0 6px 15px rgba(255, 255, 255, 1); }
+            50% { box-shadow: -6px 0 15px rgba(255, 255, 255, 1); }
+            75% { box-shadow: 0 -6px 15px rgba(255, 255, 255, 1); }
+            100% { box-shadow: 6px 0 15px rgba(255, 255, 255, 1); }
+        }
+        .animate-logo { animation: round-light 2s linear infinite; border-radius: 50%; }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-profile { animation: fade-in-up 0.8s ease-out forwards; }
+
+        /* Verified Badge Animation */
+        @keyframes pop-in {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+        .animate-verify { opacity: 0; animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+
+        /* Print Styles */
+        @media print {
+            body { background-color: white; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; padding-top: 0; }
+            .no-print { display: none !important; }
+            .id-card { border: 1px solid #ccc; box-shadow: none; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fixed top-0 left-0 w-full text-white py-3 px-4 text-center z-50 shadow-lg no-print" style="background-color: #7d0403;">
+        <p class="text-sm md:text-base font-medium">
+            <i class="fas fa-spinner fa-spin mr-2"></i>
+            Redirecting to official website in <span id="timer" class="font-bold text-yellow-300 text-lg">15</span> seconds...
+        </p>
+        <a href="https://jnanpithshikshayatan.com/" class="text-xs text-yellow-200 hover:text-white underline mt-1 block">
+            Click here if you don't want to wait
+        </a>
+    </div>
+    <div id="card-0" class="id-card flex flex-col justify-between">
+        <div class="bg-header-custom h-[182px] relative rounded-b-[50px] shadow-sm z-10 w-[120%] -ml-[10%]">
+            <div class="absolute top-4 w-full text-center px-8 pt-1 pb-2">
+                <div class="flex items-center justify-center gap-2 mb-1">
+                    <img src="http://jnanpithshikshayatan.com/online_verification/photo/jnanpithshikshayatan_logo.png" onerror="this.src='https://via.placeholder.com/150/ffffff/1a4d2e?text=JS'" class="h-12 w-12 bg-white rounded-full p-0.5 object-contain animate-logo" alt="Logo">
+                </div>
+                <h2 class="text-gray-900 school-font font-bold text-sm tracking-wide uppercase">Jnanpith Shikshayatan</h2>
+                <p class="text-red-900 text-[10px] italic font-medium mt-1">"We Brew Seeds Of Humanity!"</p>
+            </div>
+        </div>
+
+        <div class="flex-grow flex flex-col items-center -mt-6 pt-2 z-20 px-4">
+            
+            <div class="relative mb-3 animate-profile" style="animation-delay: 0s">
+                <div class="h-28 w-28 rounded-full border-4 border-white shadow-lg bg-gray-200 overflow-hidden">
+                    <img src="http://jnanpithshikshayatan.com/online_verification/photo/198485.png" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Mousume%20Paik&amp;background=random';" class="w-full h-full object-cover" alt="Mousume Paik">
+                </div>
+                <div class="absolute bottom-1 right-1 bg-white rounded-full flex items-center justify-cent  er w-8 h-8 shadow-sm border-2 border-white animate-verify" style="animation-delay: 0.5s">
+                    <i class="fas fa-check-circle text-blue-500 text-xl animate-heartbeat"></i>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-800 text-center leading-tight mb-1">Amritendu Mukherjee</h3>
+            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider mb-4">
+                Committee Member
+            </span>
+
+            <div class="w-full grid grid-cols-2 gap-x-2 gap-y-3 text-xs border-t border-b border-gray-100 py-3 mb-2">
+                <div>
+                    <p class="text-gray-400 font-medium uppercase text-[10px]">Employee ID</p>
+                    <p class="font-bold text-gray-700">198477</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 font-medium uppercase text-[10px]">Date of Joining</p>
+                    <p class="font-semibold text-gray-700">Committee-1985</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 font-medium uppercase text-[10px]">Blood Group</p>
+                    <p class="font-semibold text-gray-700 text-red-600">A+</p>
+                </div>
+                <div>
+                    <p class="text-gray-400 font-medium uppercase text-[10px]">Phone</p>
+                    <p class="font-semibold text-gray-700">9123093615</p>
+                </div>
+                <div class="col-span-2">
+                    <p class="text-gray-400 font-medium uppercase text-[10px]">Email</p>
+                    <p class="font-semibold text-gray-700 truncate">amritendu77mukherjee@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="w-full text-center px-2">
+                <p class="text-[9px] text-gray-500 leading-tight line-clamp-2">Joynagar Mazilpur</p>
+            </div>
+        </div>
+
+        <div class="bg-footer-custom text-white pt-3 px-3 pb-5 text-center mt-2 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
+            <div class="flex flex-col gap-1">
+                <p class="text-[9px]"><i class="fas fa-envelope mr-1 text-yellow-400"></i> shikshayatanjnanpith@gmail.com</p>
+                <p class="text-[8px] text-gray-300 leading-tight w-11/12 mx-auto">Ward no.1, Kali das, Sudhir Krishna Dutta Rd, Jaynagar Mazilpur, West Bengal 743337</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the time in seconds
+        let timeLeft = 25;
+        const timerDisplay = document.getElementById('timer');
+        const targetUrl = "https://jnanpithshikshayatan.com/";
+
+        // Function to update the countdown
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timerDisplay) {
+                timerDisplay.innerText = timeLeft;
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
